@@ -12,7 +12,7 @@ class Body extends Component {
     constructor() {
         super();
         this.state = {
-            loadedFile: "",
+            loadedFile: [],
             isLoaded: false
         }
     };
@@ -22,7 +22,6 @@ class Body extends Component {
             loadedFile: inputFile,
             isLoaded: true
         })
-        console.log(this.state)
     };
 
     render() {

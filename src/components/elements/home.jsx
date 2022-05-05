@@ -8,12 +8,22 @@ class HomePage extends React.Component {
     handleInputFile = (e) => {
         this.readFile(e.target.files[0])
     }
-
+    
     readFile = (file) => {
         const reader = new FileReader();
         reader.onload = (e) => {
-            const text = e.target.result;
-            this.props.handleLoad(text);
+            let text = e.target.result;
+            text = text.split('\n');
+            if (text[0] == "# MPI_ALLREDUCE timeline") {
+                text.splice(0, 2);
+                text = text.map(element => {
+                    let correctString = element.replace(/\s+/g, ' ').trim()
+                    return correctString.split(' ');
+                })
+                this.props.handleLoad(text);
+            } else {
+                alert("wrong file format");
+            }
         };
         reader.readAsText(file);
     };

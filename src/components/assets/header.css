@@ -28,7 +28,7 @@
 
 .disabled {
     pointer-events: none;
-    opacity: 0.6;
+    opacity: 0.3;
 }
 
 .styled-link div {
@@ -64,9 +64,6 @@
     
 }
 
-#file-upload-button {
-}
-
 #drop-area {
     display: flex;
     align-items: center;
@@ -76,7 +73,7 @@
     margin: 0 124px;
 
     font-size: 72px;
-    color: #aaa;
+    color: white;
     transition: .3s;
 }
 
