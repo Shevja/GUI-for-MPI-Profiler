@@ -26,6 +26,11 @@
     text-decoration: none;
 }
 
+.disabled {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
 .styled-link div {
     display: flex;
     align-items: center;
@@ -36,17 +41,48 @@
 }
 
 .styled-link div:hover {
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(230, 230, 230);
+}
+
+.file-input-button {
+    background: #e6e6e6;
+    border: solid 1px #939393;
+    padding: 10px 100px;
+    cursor: pointer;
+    /* transition: .3s; */
+}
+
+.file-input-button :hover {
+    background: #424242;
+    border: solid 10px black;
+}
+
+#file-input button{
+    /* display: none; */
+    background-color: #424242;
+    border: none;
+    
+}
+
+#file-upload-button {
 }
 
 #drop-area {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 200px;
+    height: 350px;
     background-color: rgb(190, 190, 190);
+    margin: 0 124px;
 
     font-size: 72px;
     color: #aaa;
+    transition: .3s;
+}
+
+#drop-area.highlight {
+    background-color: rgb(232 232 232);
+    outline: dashed 5px #636363;
+    outline-offset: -13px;
+    color: #636363;
 }
