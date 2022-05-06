@@ -20,6 +20,7 @@ class HomePage extends React.Component {
                     let correctString = element.replace(/\s+/g, ' ').trim()
                     return correctString.split(' ');
                 })
+                console.log(text)
                 this.props.handleLoad(text);
             } else {
                 alert("wrong file format");
@@ -30,8 +31,7 @@ class HomePage extends React.Component {
 
     handleDrop = (e) => {
         e.target.classList.remove('highlight')
-        let dt = e.dataTransfer
-        let files = dt.files
+        let files = e.dataTransfer.files
         this.readFile(files[0])
     };
 
@@ -58,10 +58,21 @@ class HomePage extends React.Component {
 
     render() {
         return (
-            <div>
-                <p>firstGraph</p>
-                <input type="file" id="file-input" multiple onChange={this.handleInputFile}/>
-                <div id="drop-area">Переместите свой файл сюда</div>
+            <div className="home-container">
+                { this.props.isLoaded
+                    ? <p><span className="file-upload-message">Файл загружен.</span><br/>Выберите способ отображения графика сверху.</p>
+                    : <p>Загрузите файл</p>
+                }
+                <div className="file-input-button">
+                    <input type="file" id="file-input" multiple onChange={this.handleInputFile}/>
+                    <label htmlFor="file-input">
+                        Выберите файл
+                    </label>
+                </div>
+                <p className="home-or-text">или</p>
+                <div id="drop-area">
+                    Переместите свой файл сюда
+                </div>
             </div>
         );
     }

@@ -29,7 +29,7 @@ class Body extends Component {
             <div>
                 <Header isLoaded={ this.state.isLoaded } />
                 <Routes>
-                        <Route path="/" element={ <HomePage handleLoad={ this.handleLoad } /> } />
+                        <Route path="/" element={ <HomePage isLoaded={ this.state.isLoaded } handleLoad={ this.handleLoad } /> } />
                         <Route path="/firstGraph" element={ <FirstGraph/> } />
                         <Route path="/firstGraph2" element={ <FirstGraph/> } />
                 </Routes>

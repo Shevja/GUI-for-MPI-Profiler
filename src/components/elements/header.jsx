@@ -10,9 +10,9 @@ const Header = ({isLoaded}) => {
             <nav>
                 <ul>
                     <li><NavLink to='/' className="styled-link"><div>Home</div></NavLink></li>
-                    <li><NavLink to='/firstGraph' className={ style }><div>1</div></NavLink></li>
-                    <li><NavLink to='/firstGraph2' className={ style }><div>2</div></NavLink></li>
-                    <li><NavLink to='#' className={ style }><div>4</div></NavLink></li>
+                    <li><NavLink to='/firstGraph' className={ style }><div>Способ 1</div></NavLink></li>
+                    <li><NavLink to='/firstGraph2' className={ style }><div>Способ 2</div></NavLink></li>
+                    <li><NavLink to='#' className={ style }><div>Способ 3</div></NavLink></li>
                 </ul>
             </nav>
         </div>

@@ -1,0 +1,42 @@
+.file-input-button {
+    margin: 0 200px 25px;
+    transition: .3s;
+}
+
+.file-input-button label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ececec;
+    width: 100%;
+    cursor: pointer;
+    height: 42px;
+}
+
+.file-input-button :hover {
+    background: #bebebe;
+}
+
+#file-input{
+    display: none;
+}
+
+#drop-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 350px;
+    background-color: rgb(190, 190, 190);
+    margin: 0 124px;
+
+    font-size: 72px;
+    color: white;
+    transition: .3s;
+}
+
+#drop-area.highlight {
+    background-color: rgb(232 232 232);
+    outline: dashed 5px #636363;
+    outline-offset: -13px;
+    color: #636363;
+}
