@@ -11,7 +11,7 @@ const Header = ({isLoaded}) => {
                 <ul>
                     <li><NavLink to='/' className="styled-link"><div>Home</div></NavLink></li>
                     <li><NavLink to='/firstGraph' className={ style }><div>Способ 1</div></NavLink></li>
-                    <li><NavLink to='/firstGraph2' className={ style }><div>Способ 2</div></NavLink></li>
+                    <li><NavLink to='/heatmap' className={ style }><div>Способ 2</div></NavLink></li>
                     <li><NavLink to='#' className={ style }><div>Способ 3</div></NavLink></li>
                 </ul>
             </nav>
