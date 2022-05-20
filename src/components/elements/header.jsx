@@ -9,10 +9,11 @@ const Header = ({isLoaded}) => {
         <div className="header-container">
             <nav>
                 <ul>
-                    <li><NavLink to='/' className="styled-link"><div>Home</div></NavLink></li>
-                    <li><NavLink to='/firstGraph' className={ style }><div>Способ 1</div></NavLink></li>
-                    <li><NavLink to='/heatmap' className={ style }><div>Способ 2</div></NavLink></li>
-                    <li><NavLink to='#' className={ style }><div>Способ 3</div></NavLink></li>
+                    <li><NavLink to='/' className="styled-link"><div>Загрузить файл</div></NavLink></li>
+                    <li><NavLink to='/heat' className={ style }><div>Тепловая карта 1</div></NavLink></li>
+                    <li><NavLink to='/heatmap' className={ style }><div>Тепловая карта 2</div></NavLink></li>
+                    <li><NavLink to='/bullet' className={ style }><div>-</div></NavLink></li>
+                    <li><NavLink to='/line' className={ style }><div>-</div></NavLink></li>
                 </ul>
             </nav>
         </div>

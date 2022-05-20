@@ -43,7 +43,7 @@ const Heat = ({ data }) => {
                 strNum++;
                 mass.push({
                     x: strNum,
-                    y: Number(elem[4])
+                    y: Number(elem[3])
                 })
             }
         });
@@ -118,7 +118,6 @@ const Heat = ({ data }) => {
                             tickSize: 6,
                             tickSpacing: 6,
                             tickOverlap: false,
-                            tickFormat: ' >-.2~s',
                             title: 'Value',
                             titleAlign: 'middle',
                             titleOffset: 3
