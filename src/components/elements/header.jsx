@@ -13,6 +13,7 @@ const Header = ({isLoaded}) => {
                     <li><NavLink to='/heat' className={ style }><div>Тепловая карта 1</div></NavLink></li>
                     <li><NavLink to='/heatmap' className={ style }><div>Тепловая карта 2</div></NavLink></li>
                     <li><NavLink to='/timeline' className={ style }><div>Временная шкала</div></NavLink></li>
+                    <li><NavLink to='/test' className={ style }><div>test</div></NavLink></li>
                 </ul>
             </nav>
         </div>

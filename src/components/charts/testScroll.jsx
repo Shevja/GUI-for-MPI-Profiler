@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import * as d3 from "d3";
 import { scaleLinear } from "d3";
 
-class Timeline extends Component {
+class Test extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -21,7 +21,6 @@ class Timeline extends Component {
             },
             chank: {
                 size: 0,
-                bounds: [],
                 lastBound: 0
             },
             data: 0
@@ -128,78 +127,34 @@ class Timeline extends Component {
         return callData;
     }
 
-    initChankBound = (chankSize, totalProcesses) => {
-        let totalChank = totalProcesses / chankSize;
-        let chankBound = [];
-        if (String(totalChank).includes('.')) {
-            totalChank = Math.floor(totalChank);
-            chankBound.push({
-                bound: totalProcesses,
-                loaded: false
-            })
-        }
-        for (let chankId = totalChank; chankId > 0; chankId--) {
-            chankBound.unshift({
-                bound: chankSize * chankId,
-                loaded: false
-            })
-        }
-
-        return chankBound;
-    }
-
     getXPos = (time) => {
         return time * (this.state.rect.width / this.state.data.endTime);
     }
 
-    drawChank = (caData, mainframe, chankId, xScale, yScale) => {
-        const chank = this.state.chank.bounds[chankId];
-        let processId = (chankId == 0) ? 0 : this.state.chank.bounds[chankId - 1].bound;
-        for (; processId < chank.bound; processId++) {
+    drawChank = (caData, mainframe, xScale, yScale) => {
+        for (let processNum = this.state.chank.lastBound; processNum < this.state.data.totalProcesses; processNum++) {
             try {
-                const yPosition = this.state.mainframe.margin.top + processId * (this.state.rect.height + this.state.rect.borderBottomWidth);//processId - номер процесса
-                this.drawRect(mainframe, caData[processId], processId, yPosition, xScale, yScale)
+                const yPosition = this.state.mainframe.margin.top + processNum * (this.state.rect.height + this.state.rect.borderBottomWidth);//processNum - номер процесса
+                this.drawRect(mainframe, caData[processNum], processNum, yPosition, xScale, yScale)
             } catch {
-                console.log('bound!')
+                console.log('bound')
             }
         }
-        this.state.chank.bounds[chankId].loaded = true;
-        // console.log(this.state.chank)
-    }
-
-    handleScroll = (event, callData, mainframe, xScale, yScale) => {
-        const upperBound = Math.floor(document.documentElement.scrollTop / (this.state.rect.height + this.state.rect.borderBottomWidth))
-        const lowerBound = Math.floor((document.documentElement.scrollTop + window.innerHeight) / (this.state.rect.height + this.state.rect.borderBottomWidth))
-        
-        let chankIdPrev = this.state.chank.bounds.findIndex(currentBound => currentBound.bound > upperBound);
-        let chankIdNext = this.state.chank.bounds.findIndex(currentBound => currentBound.bound > lowerBound);
-        chankIdPrev = chankIdPrev < 0? 0 : chankIdPrev;
-        chankIdNext = chankIdNext < 0? 0 : chankIdNext;
-
-        if (!this.state.chank.bounds[chankIdPrev].loaded) {
-            this.drawChank(callData, mainframe, chankIdPrev, xScale, yScale);
-        }
-        if (!this.state.chank.bounds[chankIdNext].loaded) {
-            this.drawChank(callData, mainframe, chankIdNext, xScale, yScale);
-        }
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll);
     }
 
     async componentDidMount() {
-        // init values
-        // const callData = this.parseData1(); // debug data
+        // const callData = this.parseData1();
         const callData = this.parseData(this.props.data);
-        const chankSize = Math.floor(window.innerHeight / (this.state.rect.height + this.state.rect.borderBottomWidth)); //60
-        const chankBound = this.initChankBound(chankSize, callData.totalProcesses)
-        //
+        // create gantt chart
 
+        // const callData = this.parseData(this.props.data);
+        // for(let i = 0; i < 1; i++) {
+        //     this.draw(callData[i]);
+        // }
+        let chankSize = Math.floor(window.innerHeight / (this.state.rect.height + this.state.rect.borderBottomWidth)); //60
         await this.setState({
             chank: {
                 size: chankSize,
-                bounds: chankBound,
                 lastBound: 0
             },
             data: callData
@@ -213,11 +168,8 @@ class Timeline extends Component {
             .domain([0, 0])
             .range([0, 0])
 
-        console.log(this.state.chank)
         console.log('draw')
         const mainframe = this.drawTimeline(this.state.data, xScale, yScale);
-
-        window.addEventListener('scroll', event => this.handleScroll(event, this.state.data, mainframe, xScale, yScale));
     }
 
     drawTimeline = (callData, xScale, yScale) => {
@@ -239,7 +191,7 @@ class Timeline extends Component {
             .attr('stroke-dasharray', '2,2')
             .call(x_axis)
 
-        this.drawChank(callData, mainframe, 0, xScale, yScale);
+        this.drawChank(callData, mainframe, xScale, yScale);
 
         return mainframe;
     }
@@ -264,6 +216,7 @@ class Timeline extends Component {
             .attr('transform', `translate(${this.state.mainframe.margin.left}, 
                         ${Number(yPosition) + this.state.rect.height * 0.5})`)//processNum - номер процесса
             .call(y_axis)
+
         ///////////// Duration rectangle
         svg.selectAll('rect')
             .data(data).enter()
@@ -282,4 +235,4 @@ class Timeline extends Component {
         );
     }
 }
-export default Timeline;
+export default Test;
