@@ -26,6 +26,11 @@
     text-decoration: none;
 }
 
+.active {
+    pointer-events: none;
+    background: black;
+}
+
 .disabled {
     pointer-events: none;
     opacity: 0.3;

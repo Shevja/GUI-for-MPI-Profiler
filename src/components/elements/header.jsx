@@ -9,11 +9,11 @@ const Header = ({isLoaded}) => {
         <div className="header-container">
             <nav>
                 <ul>
-                    <li><NavLink to='/' className="styled-link"><div>Загрузить файл</div></NavLink></li>
-                    <li><NavLink to='/heat' className={ style }><div>Тепловая карта 1</div></NavLink></li>
-                    <li><NavLink to='/heatmap' className={ style }><div>Тепловая карта 2</div></NavLink></li>
-                    <li><NavLink to='/timeline' className={ style }><div>Временная шкала</div></NavLink></li>
-                    <li><NavLink to='/test' className={ style }><div>test</div></NavLink></li>
+                    <li><NavLink to='/' className={({ isActive }) => isActive? "styled-link disabled" : "styled-link" }><div>Загрузить файл</div></NavLink></li>
+                    <li><NavLink to='/heat' className={({ isActive }) => isActive? "styled-link disabled" : style }><div>Тепловая карта 1</div></NavLink></li>
+                    <li><NavLink to='/heatmap' className={({ isActive }) => isActive? "styled-link disabled" : style }><div>Тепловая карта 2</div></NavLink></li>
+                    <li><NavLink to='/timeline' className={({ isActive }) => isActive? "styled-link disabled" : style }><div>Временная шкала</div></NavLink></li>
+                    {/* <li><NavLink to='/test' className={({ isActive }) => isActive? "styled-link disabled" : style }><div>test</div></NavLink></li> */}
                 </ul>
             </nav>
         </div>

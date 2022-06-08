@@ -15,8 +15,8 @@ class Timeline extends Component {
                 }
             },
             rect: {
-                width: 1100,
-                height: 10,
+                width: 600,
+                height: 50,
                 borderBottomWidth: 2
             },
             chank: {
@@ -30,7 +30,7 @@ class Timeline extends Component {
 
     parseData1 = () => {
         return {
-            totalProcesses: 200,
+            totalProcesses: 1,
             endTime: 255,
             0: [{
                 callStartTime: 2,
@@ -190,9 +190,10 @@ class Timeline extends Component {
 
     async componentDidMount() {
         // init values
-        // const callData = this.parseData1(); // debug data
-        const callData = this.parseData(this.props.data);
+        const callData = this.parseData1(); // debug data
+        // const callData = this.parseData(this.props.data);
         const chankSize = Math.floor(window.innerHeight / (this.state.rect.height + this.state.rect.borderBottomWidth)); //60
+        console.log(callData)
         const chankBound = this.initChankBound(chankSize, callData.totalProcesses)
         //
 

@@ -52,6 +52,7 @@ const Heat = ({ data }) => {
             data: mass
         });
     }
+    console.log(heatData)
     // console.time("time parse")
     let delimiter = 50;
     let newHeatData = [];
